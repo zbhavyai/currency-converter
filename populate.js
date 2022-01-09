@@ -7,24 +7,21 @@ function populate_currency_list(currency_json) {
 
     // loop for two dropdowns
     for (let i = 0; i < currency_list.length; i++) {
-
         // loop for every supported currency
         for (let j = 0; j < currency_json.length; j++) {
             let obj = currency_json[j];
             let newElement = document.createElement('option');
-            newElement.appendChild(document.createTextNode(obj['currency_name']));
+            newElement.appendChild(
+                document.createTextNode(obj['currency_name'])
+            );
 
             if (i == 0 && obj['currency_code'] === 'USD') {
                 newElement.setAttribute('value', obj['currency_code']);
                 newElement.setAttribute('selected', '');
-            }
-
-            else if (i == 1 && obj['currency_code'] === 'CAD') {
+            } else if (i == 1 && obj['currency_code'] === 'CAD') {
                 newElement.setAttribute('value', obj['currency_code']);
                 newElement.setAttribute('selected', '');
-            }
-
-            else {
+            } else {
                 newElement.setAttribute('value', obj['currency_code']);
             }
 
@@ -38,7 +35,11 @@ function populate_currency_list(currency_json) {
  */
 function fetch_supported_list() {
     var rawFile = new XMLHttpRequest();
-    rawFile.open('GET', 'https://raw.githubusercontent.com/meng-ucalgary/test/main/supported_currencies.json', true);
+    rawFile.open(
+        'GET',
+        'https://raw.githubusercontent.com/zbhavyai/currency-converter/main/supported_currencies.json',
+        true
+    );
 
     rawFile.onreadystatechange = function () {
         if (rawFile.readyState === XMLHttpRequest.DONE) {
