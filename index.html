@@ -13,48 +13,46 @@
 </head>
 
 <body>
-    <article class='container'>
-        <header>
-            <h1>Currency Converter App</h1>
-        </header>
+    <article class="container my-5 border rounded-2 shadow-sm p-4 mb-4" style="max-width: 50rem;">
+        <!-- <article class="card mb-3" style="max-width: 50rem;"> -->
+        <nav class="navbar navbar-expand-sm bg-light justify-content-center card-header ">
+            <h1>Currency Converter</h1>
+        </nav>
 
-        <section>
-            <table>
-                <tbody>
-                    <tr>
-                        <td>
-                            <input type="number" name="amount_1" class="currency_amount" id="currency_amount_1" min='0'
-                                step="0.01" value="1" />
-                        </td>
-                        <td>
-                            <select name="list_1" class="currency_list" id="currency_list_1">
-                                <!-- fill using javascript -->
-                            </select>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <input type="number" name="amount_2" class="currency_amount" id="currency_amount_2" min='0'
-                                step="0.01" />
-                        </td>
-                        <td>
-                            <select name="list_2" class="currency_list" id="currency_list_2">
-                                <!-- fill using javascript -->
-                            </select>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+        <section class="d-flex flex-column justify-content-center">
+            <div class="row justify-content-center">
+                <div class="col-lg-4 col-md-6 col-sm-6">
+                    <input type="number" name="amount_1" class="currency_amount form-control" id="currency_amount_1"
+                        min="0" step="0.01" value="1" />
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-6">
+                    <select name="list_1" class="currency_list form-select" id="currency_list_1">
+                        <!-- fill using javascript -->
+                    </select>
+                </div>
+            </div>
 
-            <div id="test"></div>
+            <div class="row justify-content-center">
+                <div class="col-lg-4 col-md-6 col-sm-6">
+                    <input type="number" name="amount_2" class="currency_amount form-control" id="currency_amount_2"
+                        min="0" step="0.01" />
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-6">
+                    <select name="list_2" class="currency_list form-select" id="currency_list_2">
+                        <!-- fill using javascript -->
+                    </select>
+                </div>
+            </div>
+        </section>
 
-            <footer>
-                Powered by <picture>
-                    <source srcset=" https://www.exchangerate-api.com/img/hr-logo-2022-ldpi-rc.png"
-                        media="(min-width: 800px)">
-                    <img src="https://www.exchangerate-api.com/img/hr-logo-2022-invert-mdpi-rc.png" />
-                </picture>
-            </footer>
+        <div id="last_update" class="small text-muted">Last updated: NA</div>
+        <footer class="page-footer font-small blue">
+            Powered by <picture>
+                <source srcset=" https://www.exchangerate-api.com/img/hr-logo-2022-ldpi-rc.png"
+                    media="(min-width: 800px)">
+                <img src="https://www.exchangerate-api.com/img/hr-logo-2022-invert-mdpi-rc.png" />
+            </picture>
+        </footer>
     </article>
 
     <script src="populate.js" defer></script>
