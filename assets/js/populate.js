@@ -36,7 +36,7 @@ function fetch_supported_list() {
     var rawFile = new XMLHttpRequest();
     rawFile.open(
         'GET',
-        'https://raw.githubusercontent.com/zbhavyai/currency-converter/main/supported_currencies.json',
+        'https://raw.githubusercontent.com/zbhavyai/currency-converter/main/assets/other/supported_currencies.json',
         true
     );
 
