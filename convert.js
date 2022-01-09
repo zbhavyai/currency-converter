@@ -1,5 +1,5 @@
 /**
- * Add event listeners to input fields
+ * Add event listeners to select fields
  * document.getElementsByClassName returns NodeList, which is Array like, but not an array. So you cannot use map directly
  */
 Array.from(document.getElementsByClassName('currency_list')).map((obj) =>
@@ -7,10 +7,14 @@ Array.from(document.getElementsByClassName('currency_list')).map((obj) =>
 );
 
 /**
+ * Add event listeners to input fields
+ */
+Array.from(document.getElementsByClassName('currency_amount')).map((obj) =>
+    obj.addEventListener('input', amountChanged)
+);
+
+/**
  * Fetch the conversion rate from the exchangerate-api.com
- * @param {string} sourceCurr
- * @param {string} targetCurr
- * @returns {float}
  */
 function get_conversion_rate(sourceCurr, targetCurr) {
     let url = `https://v6.exchangerate-api.com/v6/0a0fe73c79cc22a52d81823a/latest/${sourceCurr}`;
@@ -26,7 +30,7 @@ function get_conversion_rate(sourceCurr, targetCurr) {
 }
 
 /**
- * Event listener added to select fields
+ * Fetch and set result currency when source and target currencies are changed
  */
 async function currencyChanged() {
     let sourceCurr = document.getElementById('currency_list_1').value;
@@ -39,17 +43,44 @@ async function currencyChanged() {
     } else {
         let rate = await get_conversion_rate(sourceCurr, targetCurr);
 
-        console.log(sourceCurr + ' -> ' + targetCurr);
-        console.log(rate);
-        console.log(sourceNum.value + ' and ' + targetNum.value);
-
         if (rate === '') {
             targetNum.value = 0;
             console.log('Error');
         } else {
-            targetNum.value = rate * sourceNum.value;
-            console.log('Final target = ' + targetNum.value);
+            // targetNum.value = rate * sourceNum.value;
+            targetNum.value = parseFloat((rate * sourceNum.value).toFixed(2));
         }
+    }
+}
+
+/**
+ * Fetch and set result currency when any currency amount is changed
+ */
+async function amountChanged(event) {
+    let sourceCurr = '';
+    let targetCurr = '';
+    let sourceNum = '';
+    let targetNum = '';
+
+    if (event.srcElement.id === 'currency_amount_1') {
+        sourceCurr = document.getElementById('currency_list_1').value;
+        targetCurr = document.getElementById('currency_list_2').value;
+        sourceNum = document.getElementById('currency_amount_1');
+        targetNum = document.getElementById('currency_amount_2');
+    } else {
+        sourceCurr = document.getElementById('currency_list_2').value;
+        targetCurr = document.getElementById('currency_list_1').value;
+        sourceNum = document.getElementById('currency_amount_2');
+        targetNum = document.getElementById('currency_amount_1');
+    }
+
+    let rate = await get_conversion_rate(sourceCurr, targetCurr);
+
+    if (rate === '') {
+        targetNum.value = 0;
+        console.log('Error');
+    } else {
+        targetNum.value = parseFloat((rate * sourceNum.value).toFixed(2));
     }
 }
 
