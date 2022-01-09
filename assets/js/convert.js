@@ -17,15 +17,17 @@ Array.from(document.getElementsByClassName('currency_amount')).map((obj) =>
  * Fetch the conversion rate from the exchangerate-api.com
  */
 function get_conversion_rate(sourceCurr, targetCurr) {
-    let url = `https://v6.exchangerate-api.com/v6/0a0fe73c79cc22a52d81823a/latest/${sourceCurr}`;
+    // let url = `https://v6.exchangerate-api.com/v6/0a0fe73c79cc22a52d81823a/latest/${sourceCurr}`;
+    let url = `https://v6.exchangerate-api.com/v6/0a0fe73c79cc22a52d81823a/pair/${sourceCurr}/${targetCurr}`;
 
     let resultPromise = fetch(url)
         .then((response) => response.json())
         .then((responseJson) => {
-            document.getElementById('last_update').innerHTML =
-                'Last updated: ' +
-                String(responseJson['time_last_update_utc']).substring(0, 25);
-            return parseFloat(responseJson['conversion_rates'][targetCurr]);
+            document.getElementById('last_update').innerHTML = String(
+                responseJson['time_last_update_utc']
+            ).substring(0, 25);
+            // return parseFloat(responseJson['conversion_rates'][targetCurr]);
+            return parseFloat(responseJson['conversion_rate']);
         })
         .catch((error) => console.warn(error));
 
