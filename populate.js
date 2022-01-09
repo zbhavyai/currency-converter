@@ -1,6 +1,5 @@
 /**
  * Populates the dropdown of currencies
- * @param {JSON} currency_json
  */
 function populate_currency_list(currency_json) {
     let currency_list = document.getElementsByClassName('currency_list');
