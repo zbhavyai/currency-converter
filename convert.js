@@ -21,9 +21,12 @@ function get_conversion_rate(sourceCurr, targetCurr) {
 
     let resultPromise = fetch(url)
         .then((response) => response.json())
-        .then((responseJson) =>
-            parseFloat(responseJson['conversion_rates'][targetCurr])
-        )
+        .then((responseJson) => {
+            document.getElementById('last_update').innerHTML =
+                'Last updated: ' +
+                String(responseJson['time_last_update_utc']).substring(0, 25);
+            return parseFloat(responseJson['conversion_rates'][targetCurr]);
+        })
         .catch((error) => console.warn(error));
 
     return resultPromise;
