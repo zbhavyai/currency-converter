@@ -6,7 +6,7 @@ A simple currency exchange rate app. See it live [here](https://zbhavyai.github.
 
 -   Powered by [ExchangeRate-API](https://www.exchangerate-api.com/), supporting 160 currencies
 
--   Displays equivalent currency promptly on changes in input values,
+-   Displays equivalent currency promptly on changes in input values
 
 ## How to run
 
