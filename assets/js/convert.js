@@ -3,7 +3,7 @@
  * document.getElementsByClassName returns NodeList, which is Array like, but not an array. So you cannot use map directly
  */
 Array.from(document.getElementsByClassName('currency_list')).map((obj) =>
-    obj.addEventListener('click', currencyChanged)
+    obj.addEventListener('change', currencyChanged)
 );
 
 /**
