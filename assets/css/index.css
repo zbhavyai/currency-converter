@@ -1,3 +1,8 @@
+html,
+body {
+    padding: 2px;
+}
+
 #appContainer {
     max-width: 45rem;
     padding: 0px;
