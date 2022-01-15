@@ -1,0 +1,17 @@
+#appContainer {
+    max-width: 45rem;
+    padding: 0px;
+}
+
+#source_logo {
+    max-width: 8rem;
+}
+
+.currency_amount,
+.currency_list {
+    max-width: 15rem;
+}
+
+.bg-text {
+    font-size: x-small;
+}
